@@ -43,12 +43,12 @@ const getList = async (req, res) => {
         ])
       }
     } else {
-      list = await List.aggregate([{ $sample: { size: 100 } }])
+      list = await List.aggregate([{ $sample: { size: 10 } }])
     }
-
+    console.log(list)
     res.status(StatusCodes.OK).json(list)
   } catch (error) {
-    res.status(StatusCodes.BAD_REQUEST).json(error)
+    //res.status(StatusCodes.BAD_REQUEST).json(error)
   }
 }
 module.exports = {

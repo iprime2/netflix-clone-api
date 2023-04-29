@@ -35,11 +35,13 @@ const getRandom = async (req, res) => {
         { $match: { isSeries: true } },
         { $sample: { size: 1 } },
       ])
-    } else {
+    } else if (type === 'movies') {
       movie = await Movies.aggregate([
         { $match: { isSeries: false } },
         { $sample: { size: 1 } },
       ])
+    } else {
+      movie = await Movies.aggregate([{ $sample: { size: 1 } }])
     }
     res.status(StatusCodes.OK).json(movie)
   } catch (error) {
