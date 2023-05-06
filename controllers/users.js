@@ -32,6 +32,7 @@ const getAll = async (req, res) => {
 }
 
 const update = async (req, res) => {
+  console.log(req.body)
   if (req.user.id === req.params.id || req.user.isAdmin) {
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10)

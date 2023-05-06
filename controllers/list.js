@@ -51,8 +51,30 @@ const getList = async (req, res) => {
     //res.status(StatusCodes.BAD_REQUEST).json(error)
   }
 }
+
+const update = async (req, res) => {
+  if (req.user.isAdmin) {
+    try {
+      const updateList = await List.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      )
+
+      res.status(StatusCodes.OK).json(updateList)
+    } catch (error) {
+      res.status(StatusCodes.BAD_REQUEST).json(error)
+    }
+  } else {
+    res.status(StatusCodes.FORBIDDEN).json('You can only update your account')
+  }
+}
+
 module.exports = {
   create,
+  update,
   deleteOne,
   getList,
 }
