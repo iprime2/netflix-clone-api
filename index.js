@@ -9,7 +9,7 @@ const cors = require('cors')
 dotenv.config()
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://sushil-netflix-clone.on.fleek.co','https://sushil-netflix-clone-admin.on.fleek.co/'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://sushil-netflix-clone.on.fleek.co','https://sushil-netflix-clone-admin.on.fleek.co'],
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
